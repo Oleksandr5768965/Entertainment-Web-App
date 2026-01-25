@@ -1,0 +1,68 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.sign-up {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: rem(48);
+        form {
+            display: flex;
+            flex-direction: column;
+            background-color: $blue900;
+            padding: rem(29) rem(24);
+            border-radius: rem(10);
+            margin-top: rem(56);
+            width: 100%;
+            input {
+                background-color: transparent;
+                border: none;
+                border-bottom: solid 1px $blue500;
+                padding: 0 rem(16) rem(16) rem(16);
+                width: 100%;
+                outline: none;
+                color: $white;
+                &:first-of-type {
+                    margin-bottom: rem(24);
+                }
+                &[type="password"]:nth-of-type(2) {
+                    margin-bottom: rem(24);
+                }
+                &:last-of-type {
+                    margin-bottom: rem(40);
+                }
+            }
+            p {
+                justify-self: center;
+            }
+        }
+    }
+    &__form-title {
+        margin-bottom: rem(40);
+    }
+    &__button-container {
+        display: flex;
+        margin-bottom: rem(24);
+        button {
+            width: 100%;
+            padding: rem(15) 0;
+            border-radius: rem(6);
+            background-color: $red500;
+            color: $white;
+            border: none;
+        }
+    }
+    &__alread-have-account {
+        display: flex;
+        justify-content: center;
+        p {
+            margin-right: 8px;
+        }
+        a {
+            color: $red500;
+        }
+    }
+}

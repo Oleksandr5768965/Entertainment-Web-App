@@ -1,0 +1,12 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+body {
+    font-family:"Outfit Light";
+    color:$white;
+    background-color: $blue950;
+}
+.container {
+    padding: 0 rem(24) 0 rem(24);
+}
