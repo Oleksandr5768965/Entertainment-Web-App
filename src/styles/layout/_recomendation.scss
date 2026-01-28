@@ -1,0 +1,53 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.recomendation {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: rem(16);
+    &__title {
+        @include text-preset1-mobile;
+        margin: 0 rem(16) 0 rem(16);
+        font-weight: 200;
+    }
+    .movie-card {
+        position:relative;
+        z-index:2;
+        width: calc(50% - 8px);
+        &__title {
+            @include text-preset4-mobile;
+        }
+        &__bookmark {
+            position:absolute;
+            width:32px;
+            height:32px;
+            z-index:1;
+            top:8px;
+            right:8px;
+            background-color: rgba(16, 20, 30, 0.5);
+            border:none;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            border-radius: 50%;
+            
+        }
+        &__image {
+            img.poster-img {
+                border-radius: rem(8);
+                margin-bottom: 8px;
+            }
+        }
+        &__info-divider {
+            margin:0 rem(8) 0 rem(8);
+        }
+        &__meta {
+            span {
+                @include text-preset6-mobile;
+
+            }
+        }
+    }
+}

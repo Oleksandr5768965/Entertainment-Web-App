@@ -1,55 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const recomendation = document.querySelector('.container.recomendation');
-    const trending = document.querySelector('.container.trending');
+import { dot } from './main';
+const categoryTvSeries = document.querySelector(".container.tv-series");
 
-    fetch('./data.json')
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(movie => {
-                const card = createAllMovieCard(movie);
-
-                if (movie.isTrending) {
-                    applyTrendingStyles(card);
-                    trending.append(card);
-                } else {
-                    recomendation.append(card);
-                }
-            });
-        })
-        .catch(console.error);
-});
-
-// =======================
-// CREATE MOVIE CARD
-// =======================
-function createAllMovieCard(movie) {
+fetch('./data.json')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(movie => {
+    const movieCard = createTvSeriesCard(movie);
+    if (movie.category === "TV Series") {
+        categoryTvSeries.append(movieCard);
+    }
+     });
+   });
+function createTvSeriesCard(movie) {
     const article = document.createElement('article');
     article.className = 'movie-card';
-
     // IMAGE
     const imageWrap = document.createElement('div');
     imageWrap.className = 'movie-card__image';
-
     const img = document.createElement('img');
     img.className = 'poster-img';
     img.src = movie.thumbnail.regular.small;
     img.alt = movie.title;
-
     // BOOKMARK
     const bookmark = document.createElement('button');
     bookmark.className = 'movie-card__bookmark';
-
     const bookmarkImg = document.createElement('img');
     bookmarkImg.className = 'bookmark-img';
-
     bookmark.append(bookmarkImg);
-    const bookmarks = getBookmarks();
-    movie.isBookmarked = bookmarks[movie.id] ?? movie.isBookmarked;
-
     // начальное состояние
     bookmark.classList.toggle('is-active', movie.isBookmarked);
     updateBookmarkIcon(bookmark, bookmarkImg);
-
     // обработчик клика
     bookmark.addEventListener('click', () => {
     movie.isBookmarked = !movie.isBookmarked;
@@ -58,63 +38,41 @@ function createAllMovieCard(movie) {
     saveBookmark(movie.id, movie.isBookmarked);
     });
     imageWrap.append(img, bookmark);
+
     // INFO
     const info = document.createElement('div');
     info.className = 'movie-card__info';
+
     const meta = document.createElement('div');
     meta.className = 'movie-card__meta';
+
     const year = document.createElement('span');
     year.textContent = movie.year;
+
     const category = document.createElement('span');
     category.textContent = movie.category;
+
     const rating = document.createElement('span');
     rating.textContent = movie.rating;
+
     meta.append(year, dot(), category, dot(), rating);
+
     const title = document.createElement('h3');
     title.className = 'movie-card__title';
     title.textContent = movie.title;
+
     info.append(meta, title);
+
     article.append(imageWrap, info);
+
     return article;
 }
-// =======================
-// BOOKMARK ICON STATE
-// =======================
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
-// =======================
-// TRENDING STYLES
-// =======================
-function applyTrendingStyles(card) {
-    card.className = 'movie-card-trending';
 
-    card.querySelector('.movie-card__image')
-        .className = 'movie-card-trending__image';
-
-    card.querySelector('.movie-card__bookmark')
-        .className = 'movie-card-trending__bookmark';
-
-    card.querySelector('.movie-card__info')
-        .className = 'movie-card-trending__info';
-
-    card.querySelector('.movie-card__meta')
-        .className = 'movie-card-trending__meta';
-
-    card.querySelector('.movie-card__title')
-        .className = 'movie-card-trending__title';
-}
-// =======================
-// DOT
-// =======================
- export function dot() {
-    const span = document.createElement('span');
-    span.textContent = '•';
-    span.className = 'movie-card__info-divider';
-    return span;
-}
 // local Storage
 const BOOKMARKS_KEY = 'bookmarks';
 
@@ -127,5 +85,3 @@ function saveBookmark(id, value) {
     bookmarks[id] = value;
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
 }
-
-

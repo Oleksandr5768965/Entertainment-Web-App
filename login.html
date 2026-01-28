@@ -4,19 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/src/styles/main.scss" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/logo.svg">
   <title>Entertainment web app</title>
 </head>
 <body>
-
-  Login
-
-  Email address
-  Password
-
-  Login to your account
-
-  Don't have an account? Sign Up
-  
+  <section class="login">
+    <div class="container">
+      <div class="login__wrapper">
+        <img src="./src/assets/logo.svg" alt="appLogo">
+        <form>
+          <h1 class="login__form-title">
+            Login
+          </h1>
+          <input type="email" placeholder="Email address">
+          <input type="password" placeholder="Password">
+          <div class="login__button-container">
+            <button>Login to your account</button>
+          </div>
+          <div class="login__dont-have-account">
+            <p>Don’t have an account?</p>
+            <a href="./sign-up.html">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

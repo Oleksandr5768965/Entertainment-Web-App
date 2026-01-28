@@ -1,0 +1,21 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.header {
+    &__navbar-wrapper {
+        padding:rem(16);
+        background-color: $blue900;
+        img[alt="Img Avatar"] { height:24px; } 
+        img[alt="appLogo"] { height:20px; }
+    }
+    &__navbar {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__navbar-buttons {
+        display:flex;
+        column-gap: rem(24);
+    }
+}

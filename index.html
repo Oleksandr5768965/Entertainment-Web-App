@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/src/styles/main.scss" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/logo.svg">
   <title>Entertainment web app</title>
 </head>
   <body>
-    <section class="login">
+    <section class="login" style="display:none">
       <div class="container">
         <div class="login__wrapper">
           <img src="./src/assets/logo.svg" alt="appLogo">
@@ -29,5 +29,40 @@
         </div>
       </div>
     </section>
+    <section class="header">
+        <div class="header__navbar-wrapper">
+          <div class="header__navbar">
+            <img src="./src/assets/logo.svg" alt="appLogo">
+            <div class="header__navbar-buttons">
+              <a href="./index.html"><img src="./src/assets/icon-nav-home.svg" alt="Home"></a>
+              <a href="./movies.html"><img src="./src/assets/icon-nav-movies.svg" alt="Movies"></a>
+              <a href="./tv-series.html"><img src="./src/assets/icon-nav-tv-series.svg" alt="TV-series"></a>
+              <a href="./bookmarked.html"><img src="./src/assets/icon-nav-bookmark.svg" alt="Bookmarks"></a>
+            </div>
+            <img src="./src/assets/image-avatar.png" alt="Img Avatar">
+          </div>
+        </div>
+    </section>
+    <section class="search">
+      <div class="container">
+        <div class="search__wrapper">
+          <img src="./src/assets/icon-search.svg" alt="Search">
+          <input type="search" placeholder="Search for movies or TV series">
+        </div>
+      </div>
+    </section>
+    <section class="trending" style="display:none">
+      <div class="container trending"></div>
+    </section>
+    <section class="recomendation">
+      <h2 class="recomendation__title">Recommended for you</h2>
+      <div class="container recomendation"></div>
+    </section>
+    <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/trending.js"> </script>
+    <script type="module" src="./src/js/slider-trending.js"></script>
+    <script type="module" src="./src/js/movies.js"></script>
+    <script type="module" src="./src/js/tv-series.js"></script>
+    <script type="module" src="./src/js/bookmarked.js"></script>
   </body>
 </html>

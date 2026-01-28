@@ -1,0 +1,22 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.search {
+    margin-bottom: rem(24);
+    &__wrapper {
+        display:flex;
+        margin-top: rem(24);
+        img {
+            margin-right: rem(16);
+            height: 24px;
+        }
+        input {
+            background-color: transparent;
+            border: none;
+            outline:none;
+            color:$white;
+            width:100%;
+        }
+    }
+}

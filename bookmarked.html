@@ -8,16 +8,37 @@
   <title>Entertainment web app</title>
 </head>
 <body>
-
-  Search for bookmarked shows
-  
-  Bookmarked Movies
-
-  <!-- Display bookmarked movies -->
-
-  Bookmarked TV Series
-
-  <!-- Display bookmarked TV series -->
-  
+  <section class="header">
+    <div class="header__navbar-wrapper">
+      <div class="header__navbar">
+        <img src="./src/assets/logo.svg" alt="appLogo">
+        <div class="header__navbar-buttons">
+          <a href="./index.html"><img src="./src/assets/icon-nav-home.svg" alt="Home"></a>
+          <a href="./movies.html"><img src="./src/assets/icon-nav-movies.svg" alt="Movies"></a>
+          <a href="./tv-series.html"><img src="./src/assets/icon-nav-tv-series.svg" alt="TV-series"></a>
+          <a href="./bookmarked.html"><img src="./src/assets/icon-nav-bookmark.svg" alt="Bookmarks"></a>
+        </div>
+        <img src="./src/assets/image-avatar.png" alt="Img Avatar">
+      </div>
+    </div>
+  </section>
+  <section class="search">
+    <div class="container">
+      <div class="search__wrapper">
+        <img src="./src/assets/icon-search.svg" alt="Search">
+        <input type="search" placeholder="Search for Bookmarked movies or TV series">
+      </div>
+    </div>
+  </section>
+  <section class="bookmarked">
+    <h2 class="bookmarked__title">Bookmarked Movies</h2>
+    <div class="container bookmarked"></div>
+  </section>
+  <script type="module" src="./src/js/main.js"></script>
+  <script type="module" src="./src/js/trending.js"> </script>
+  <script type="module" src="./src/js/slider-trending.js"></script>
+  <script type="module" src="./src/js/movies.js"></script>
+  <script type="module" src="./src/js/tv-series.js"></script>
+  <script type="module" src="./src/js/bookmarked.js"></script>
 </body>
 </html>
