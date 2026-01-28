@@ -11,6 +11,7 @@ export default defineConfig({
         movies: resolve(__dirname, "movies.html"),
         signUp: resolve(__dirname, "sign-up.html"),
         tvSeries: resolve(__dirname, "tv-series.html"),
+        account: resolve(__dirname, "account.html"),
       },
     },
   },

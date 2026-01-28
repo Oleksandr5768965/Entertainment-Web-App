@@ -1,0 +1,32 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.account {
+    &__title {
+       @include text-preset1-mobile;
+        font-weight: 200;
+        margin-top: rem(24);
+    }
+    &__image {
+        margin-top: rem(24);
+        display:flex;
+        justify-content: center;
+    }
+    &__info {
+        display:flex;
+        flex-direction: column;
+        row-gap: 30px;
+        margin-top: rem(24);
+        input {
+            color:$white;
+            background-color: transparent;
+            outline:none;
+            border: solid 2px $blue500;
+            border-radius: 8px;
+            padding:10px;
+            margin-top: 10px;
+            @include text-preset2-mobile;
+        }
+    }
+}
