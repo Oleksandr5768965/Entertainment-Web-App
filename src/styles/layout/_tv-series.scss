@@ -18,6 +18,7 @@
         width: calc(50% - 8px);
         &__title {
             @include text-preset4-mobile;
+            margin-top: rem(8);
         }
         &__bookmark {
             position: absolute;
@@ -40,12 +41,16 @@
             }
         }
         &__info-divider {
-            margin: 0 rem(8) 0 rem(8);
+            margin:0 rem(8) 0 rem(8);
         }
         &__meta {
+            display:flex;
             span {
                 @include text-preset6-mobile;
-    
+
+            }
+            img[alt="category Img"] {
+                margin-right: rem(8);
             }
         }
     }

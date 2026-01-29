@@ -21,6 +21,7 @@
         width: calc(50% - 8px);
         &__title {
             @include text-preset4-mobile;
+            margin-top: rem(8);
         }
         &__bookmark {
             position: absolute;
@@ -36,14 +37,14 @@
             align-items: center;
             border-radius: 50%;
         }
-        &__image {
+         &__image {
             img.poster-img {
                 border-radius: rem(8);
                 margin-bottom: 8px;
             }
         }
         &__info-divider {
-            margin: 0 rem(8) 0 rem(8);
+            margin:0 rem(8) 0 rem(8);
         }
         &__meta {
             display:flex;

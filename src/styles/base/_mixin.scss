@@ -1,3 +1,5 @@
+@use "../base/variables" as *;
+
 @mixin text-preset1 { font-size: 32px; line-height: 125%; letter-spacing: -0.5px; }
 @mixin text-preset1-mobile { font-size: 20px; line-height: 125%; letter-spacing: -0.3px; }
 @mixin text-preset2-medium { font-size: 24px; line-height: 125%; letter-spacing: 0px; }
@@ -10,3 +12,22 @@
 @mixin text-preset5 { font-size: 13px; line-height: 125%; letter-spacing: 0px; }
 @mixin text-preset5-mobile { font-size: 12px; line-height: 125%; letter-spacing: 0px; }
 @mixin text-preset6-mobile { font-size: 11px; line-height: 125%; letter-spacing: 0px; }
+
+// media queries 
+
+@mixin mini-mobile  {
+    @media (max-width: $mini-mobile) {
+        @content;
+    }
+}
+@mixin tablet-media {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin desktop-media {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}

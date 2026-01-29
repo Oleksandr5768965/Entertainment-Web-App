@@ -1,0 +1,46 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.author-info {
+    display:flex;
+    margin-top: rem(40);
+    padding-bottom: rem(40);
+    &__title {
+       @include text-preset1-mobile;
+        margin-bottom: rem(24);
+        font-weight: 200;
+    }
+    &__wrapper {
+        display:flex;
+        flex-wrap: wrap;
+        row-gap: 24px;
+    }
+    &__info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        img {
+            width: 30%;
+            border-radius: 50%;
+        }
+    }
+    &__tech-info {
+        display:flex;
+        flex-direction: column;
+        row-gap: 6px;
+        margin-top: 8px;
+        align-items: center;
+        &--name {
+            @include text-preset3;
+        }
+        &--job {
+            color: $blue500;
+        }
+        &--description {
+            @include text-preset4-mobile;
+            width:250px;
+            text-align: center;
+        }
+    }
+}

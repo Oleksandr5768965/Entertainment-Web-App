@@ -62,3 +62,14 @@
 .movie-card__info-divider {
     margin: 0 rem(8) 0 rem(8);
 }
+.swiper-slide {
+    flex-shrink: 0;
+    width: auto;
+}
+.swiper-wrapper {
+    box-sizing: border-box;
+}
+.swiper {
+    padding-right: 132px !important;
+    /* = spaceBetween */
+}

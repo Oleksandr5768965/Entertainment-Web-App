@@ -47,6 +47,7 @@
         }
         &__meta {
             display:flex;
+            flex-wrap: wrap;
             span {
                 @include text-preset6-mobile;
 
@@ -55,5 +56,11 @@
                 margin-right: rem(8);
             }
         }
+    }
+}
+
+@include mini-mobile {
+    .movie-card {
+        width: 100% !important;
     }
 }

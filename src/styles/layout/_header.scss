@@ -25,14 +25,11 @@
     }
 }
 
-// .active {
-//     &__navbar-buttons {
-//         a {
-//             svg {
-//                 path {
-//                     fill: $white;
-//                 }
-//             }
-//         }
-//     }
-// }
+@include tablet-media {
+    .header {
+        &__navbar-wrapper {
+            margin:rem(16) rem(16) 0 rem(16);
+            border-radius: rem(8);
+        }
+    }
+}
