@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: rem(16);
+    margin-top: rem(24);
     &__title {
         @include text-preset1-mobile;
         margin: 0 rem(16) 0 rem(16);
@@ -44,9 +45,13 @@
             margin:0 rem(8) 0 rem(8);
         }
         &__meta {
+            display:flex;
             span {
                 @include text-preset6-mobile;
 
+            }
+            img[alt="category Img"] {
+                margin-right: rem(8);
             }
         }
     }

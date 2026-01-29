@@ -20,6 +20,17 @@ function createMovieCard(movie) {
     const img = document.createElement('img');
     img.className = 'poster-img';
     img.src = movie.thumbnail.regular.small;
+    // auto change image 
+    img.srcset = `
+      ${movie.thumbnail.regular.small} 375w,
+      ${movie.thumbnail.regular.medium}  768w,
+      ${movie.thumbnail.regular.large} 1140w
+    `;
+    img.sizes = `
+      (max-width:375px) 100%,
+      (max-width: 768px) 100%,
+      1440px
+    `;
     img.alt = movie.title;
     // BOOKMARK
     const bookmark = document.createElement('button');
@@ -53,8 +64,14 @@ function createMovieCard(movie) {
 
     const rating = document.createElement('span');
     rating.textContent = movie.rating;
-
-    meta.append(year, dot(), category, dot(), rating);
+    const categoryImg = document.createElement('img');
+    const categoryIcons = {
+    Movie: './src/assets/icon-category-movie.svg',
+    'TV Series': './src/assets/icon-category-tv.svg'
+     };
+    categoryImg.src = categoryIcons[movie.category];
+    categoryImg.alt = 'category Img';
+    meta.append(year, dot(), categoryImg, category, dot(), rating);
 
     const title = document.createElement('h3');
     title.className = 'movie-card__title';

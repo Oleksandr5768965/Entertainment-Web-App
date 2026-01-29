@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             data.forEach(movie => {
-                const card = createAllMovieCard(movie);
+                const card = createMovieCard(movie);
 
                 if (movie.isTrending) {
-                    applyTrendingStyles(card);
                     trending.append(card);
                 } else {
                     recomendation.append(card);
@@ -18,65 +17,106 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(console.error);
 });
-
 // =======================
 // CREATE MOVIE CARD
 // =======================
-function createAllMovieCard(movie) {
+function createMovieCard(movie) {
     const article = document.createElement('article');
-    article.className = 'movie-card';
+    article.className = movie.isTrending
+        ? 'movie-card-trending swiper-slide'
+        : 'movie-card';
 
-    // IMAGE
+    // IMAGE WRAP
     const imageWrap = document.createElement('div');
-    imageWrap.className = 'movie-card__image';
+    imageWrap.className = movie.isTrending
+        ? 'movie-card-trending__image'
+        : 'movie-card__image';
 
     const img = document.createElement('img');
     img.className = 'poster-img';
     img.src = movie.thumbnail.regular.small;
+    img.srcset = `
+        ${movie.thumbnail.regular.small} 375w,
+        ${movie.thumbnail.regular.medium} 768w,
+        ${movie.thumbnail.regular.large} 1140w
+    `;
+    img.sizes = '(max-width: 768px) 100%, 1140px';
     img.alt = movie.title;
 
     // BOOKMARK
     const bookmark = document.createElement('button');
-    bookmark.className = 'movie-card__bookmark';
+    bookmark.className = movie.isTrending
+        ? 'movie-card-trending__bookmark'
+        : 'movie-card__bookmark';
 
     const bookmarkImg = document.createElement('img');
     bookmarkImg.className = 'bookmark-img';
 
     bookmark.append(bookmarkImg);
+
+    // bookmark state
     const bookmarks = getBookmarks();
     movie.isBookmarked = bookmarks[movie.id] ?? movie.isBookmarked;
 
-    // начальное состояние
     bookmark.classList.toggle('is-active', movie.isBookmarked);
     updateBookmarkIcon(bookmark, bookmarkImg);
 
-    // обработчик клика
     bookmark.addEventListener('click', () => {
-    movie.isBookmarked = !movie.isBookmarked;
-    bookmark.classList.toggle('is-active', movie.isBookmarked);
-    updateBookmarkIcon(bookmark, bookmarkImg);
-    saveBookmark(movie.id, movie.isBookmarked);
+        movie.isBookmarked = !movie.isBookmarked;
+        bookmark.classList.toggle('is-active', movie.isBookmarked);
+        updateBookmarkIcon(bookmark, bookmarkImg);
+        saveBookmark(movie.id, movie.isBookmarked);
     });
+
     imageWrap.append(img, bookmark);
+
     // INFO
     const info = document.createElement('div');
-    info.className = 'movie-card__info';
+    info.className = movie.isTrending
+        ? 'movie-card-trending__info'
+        : 'movie-card__info';
+
     const meta = document.createElement('div');
-    meta.className = 'movie-card__meta';
+    meta.className = movie.isTrending
+        ? 'movie-card-trending__meta'
+        : 'movie-card__meta';
+
     const year = document.createElement('span');
     year.textContent = movie.year;
+
     const category = document.createElement('span');
     category.textContent = movie.category;
+
     const rating = document.createElement('span');
     rating.textContent = movie.rating;
-    meta.append(year, dot(), category, dot(), rating);
+    const categoryImg = document.createElement('img');
+    const categoryIcons = {
+    Movie: './src/assets/icon-category-movie.svg',
+    'TV Series': './src/assets/icon-category-tv.svg'
+     };
+    categoryImg.src = categoryIcons[movie.category];
+    categoryImg.alt = 'category Img';
+    meta.append(year, dot(), categoryImg, category, dot(), rating);
+
     const title = document.createElement('h3');
-    title.className = 'movie-card__title';
+    title.className = movie.isTrending
+        ? 'movie-card-trending__title'
+        : 'movie-card__title';
+
     title.textContent = movie.title;
+
     info.append(meta, title);
-    article.append(imageWrap, info);
+
+    if (movie.isTrending) {
+        imageWrap.append(info);
+        article.append(imageWrap);
+    } else {
+        article.append(imageWrap, info);
+    }
+
     return article;
 }
+
 // =======================
 // BOOKMARK ICON STATE
 // =======================
@@ -89,7 +129,7 @@ function updateBookmarkIcon(bookmark, img) {
 // TRENDING STYLES
 // =======================
 function applyTrendingStyles(card) {
-    card.className = 'movie-card-trending';
+    card.className = 'movie-card-trending swiper-slide';
 
     card.querySelector('.movie-card__image')
         .className = 'movie-card-trending__image';

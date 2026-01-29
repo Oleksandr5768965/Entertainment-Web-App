@@ -2,22 +2,22 @@
 @use "../base/functions" as *;
 @use "../base/mixin" as *;
 
-.movies {
+.trending {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: rem(16);
+    flex-direction: row;
+    column-gap: rem(25);
     &__title {
         @include text-preset1-mobile;
         margin: 0 rem(16) 0 rem(16);
         font-weight: 200;
+        margin-bottom: rem(16);
     }
-    .movie-card {
+    .movie-card-trending {
         position: relative;
         z-index: 2;
         width: calc(50% - 8px);
         &__title {
-            @include text-preset4-mobile;
+            @include text-preset1-mobile;
         }
         &__bookmark {
             position: absolute;
@@ -34,23 +34,30 @@
             border-radius: 50%;
         }
         &__image {
+            position: relative;
             img.poster-img {
                 border-radius: rem(8);
                 margin-bottom: 8px;
+                width:100%;
             }
         }
-        &__info-divider {
-            margin: 0 rem(8) 0 rem(8);
+        &__info {
+            position: absolute;
+            bottom:19px;
+            left:19px;
         }
         &__meta {
             display:flex;
             span {
-                @include text-preset6-mobile;
-
+                @include text-preset4-mobile;
+                opacity:79%;
             }
             img[alt="category Img"] {
                 margin-right: rem(8);
             }
         }
     }
+}
+.movie-card__info-divider {
+    margin: 0 rem(8) 0 rem(8);
 }
