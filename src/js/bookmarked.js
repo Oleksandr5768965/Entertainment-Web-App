@@ -95,6 +95,22 @@ function createBookmarkedCard(movie) {
 
     return article;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navMap = {
+        'index.html': '.header__navbar-buttons--img.home',
+        'movies.html': '.header__navbar-buttons--img.movies',
+        'tv-series.html': '.header__navbar-buttons--img.tv-series',
+        'bookmarked.html': '.header__navbar-buttons--img.bookmarked',
+    };
+
+    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    const selector = navMap[currentPage];
+    if (!selector) return;
+
+    document.querySelector(selector)?.classList.add('active');
+});
+
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'

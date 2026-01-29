@@ -18,4 +18,21 @@
         display:flex;
         column-gap: rem(24);
     }
+    &__navbar-buttons--img.active {
+        path {
+            fill: $white;
+        }
+    }
 }
+
+// .active {
+//     &__navbar-buttons {
+//         a {
+//             svg {
+//                 path {
+//                     fill: $white;
+//                 }
+//             }
+//         }
+//     }
+// }

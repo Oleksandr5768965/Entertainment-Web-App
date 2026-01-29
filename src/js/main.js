@@ -2,20 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const recomendation = document.querySelector('.container.recomendation');
     const trending = document.querySelector('.container.trending');
 
-    fetch('./data.json')
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(movie => {
-                const card = createMovieCard(movie);
-
-                if (movie.isTrending) {
-                    trending.append(card);
-                } else {
-                    recomendation.append(card);
-                }
-            });
-        })
-        .catch(console.error);
+fetch('./data.json')
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(movie => {
+            const card = createMovieCard(movie);
+            if (movie.isTrending) {
+                trending.append(card);
+            } else {
+                recomendation.append(card);
+            }
+        });
+    })
+    .catch(console.error);
 });
 // =======================
 // CREATE MOVIE CARD
@@ -146,6 +145,20 @@ function applyTrendingStyles(card) {
     card.querySelector('.movie-card__title')
         .className = 'movie-card-trending__title';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navMap = {
+        'index.html': '.header__navbar-buttons--img.home',
+        'movies.html': '.header__navbar-buttons--img.movies',
+        'tv-series.html': '.header__navbar-buttons--img.tv-series',
+        'bookmarked.html': '.header__navbar-buttons--img.bookmarked',
+    };
+    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    const selector = navMap[currentPage];
+    if (!selector) return;
+
+    document.querySelector(selector)?.classList.add('active');
+});
 // =======================
 // DOT
 // =======================
@@ -155,9 +168,9 @@ function applyTrendingStyles(card) {
     span.className = 'movie-card__info-divider';
     return span;
 }
+
 // local Storage
 const BOOKMARKS_KEY = 'bookmarks';
-
 function getBookmarks() {
     return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
 }

@@ -19,6 +19,7 @@
         width: calc(50% - 8px);
         &__title {
             @include text-preset4-mobile;
+            margin-top: rem(8);
         }
         &__bookmark {
             position:absolute;
