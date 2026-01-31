@@ -1,16 +1,25 @@
 import { dot } from './main';
-const categoryMovies = document.querySelector(".container.movies");
 
+const domElement = {
+    categoryMovies: document.querySelector(".container.movies"),
+}
+
+// =======================
+// GET ACCES TO DATA
+// =======================
 fetch('./data.json')
     .then(res => res.json())
     .then(data => {
       data.forEach(movie => {
         const movieCard = createMovieCard(movie);
             if (movie.category === "Movie") {
-                categoryMovies.append(movieCard);
+                domElement.categoryMovies.append(movieCard);
             }
       });
     });
+// =======================
+// CREATE MOVIE CARD
+// =======================
 function createMovieCard(movie) {
     const article = document.createElement('article');
     article.className = 'movie-card';
@@ -83,7 +92,9 @@ function createMovieCard(movie) {
 
     return article;
 }
-
+// =======================
+// MARKING NAV BUTTONS ON ANOTHER PAGES
+// =======================
 document.addEventListener('DOMContentLoaded', () => {
     const navMap = {
         'index.html': '.header__navbar-buttons--img.home',
@@ -98,14 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector(selector)?.classList.add('active');
 });
-
+// =======================
+// UPDATE BOOKMARK ICONS
+// =======================
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
 
-// local Storage
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
 const BOOKMARKS_KEY = 'bookmarks';
 function getBookmarks() {
     return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};

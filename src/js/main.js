@@ -1,21 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const recomendation = document.querySelector('.container.recomendation');
-    const trending = document.querySelector('.container.trending');
 
+    const domElement = {
+        recomendation: document.querySelector('.container.recomendation'),
+        recomendationTitle: document.querySelector('.recomendation__title'),
+        trending: document.querySelector('.container.trending'),
+        trendingTitle: document.querySelector('.trending__title'),
+        searchField: document.querySelector('#search-field')
+    }
+
+// =======================
+// GET ACCES TO DATA
+// =======================
+let movies = [];
 fetch('./data.json')
     .then(res => res.json())
     .then(data => {
+        movies = data;
         data.forEach(movie => {
             const card = createMovieCard(movie);
             if (movie.isTrending) {
-                trending.append(card);
+                domElement.trending.append(card);
             } else {
-                recomendation.append(card);
+                domElement.recomendation.append(card);
             }
         });
     })
     .catch(console.error);
-});
 // =======================
 // CREATE MOVIE CARD
 // =======================
@@ -115,9 +124,64 @@ function createMovieCard(movie) {
 
     return article;
 }
-
 // =======================
-// BOOKMARK ICON STATE
+// RENDER MOVIES CARD FOR SEARCH
+// =======================
+// title for search mode
+const searchTitle = document.createElement('h2');
+searchTitle.className = 'recomendation__search-result-title';
+searchTitle.style.display = 'none';
+domElement.trending.parentNode.insertBefore(
+    searchTitle,
+    domElement.trending
+);
+
+function renderMovies(list) {
+    domElement.recomendation.innerHTML = '';
+    domElement.trending.innerHTML = '';
+
+    list.forEach(movie => {
+        const card = createMovieCard(movie);
+       
+        if (movie.isTrending) {
+            domElement.trending.append(card);
+        } else {
+            domElement.recomendation.append(card);
+        }
+    });
+}
+// =======================
+// FILTER MOVIES FOR SEARCH
+// =======================
+function filterMovies(query) {
+    const q = query.toLowerCase();
+
+    return movies.filter(movie =>
+        movie.title.toLowerCase().includes(q)
+    );
+}
+// =======================
+// EVENT LISTENER ON THE INPUT
+// =======================
+domElement.searchField.addEventListener('input', (e) => {
+    const value = e.target.value.trim();
+    if (!value) {
+        searchTitle.style.display = 'none';
+        domElement.recomendationTitle.style.display = 'block';
+        domElement.trendingTitle.style.display = 'block';
+        renderMovies(movies);
+        return;
+    }
+    domElement.recomendationTitle.style.display = 'none';
+    domElement.trendingTitle.style.display = 'none';
+    const filteredMovies = filterMovies(value);
+    searchTitle.textContent =
+        `Found ${filteredMovies.length} results for '${value}'`;
+    searchTitle.style.display = 'block';
+    renderMovies(filteredMovies);
+});
+// =======================
+// UPDATE BOOKMARK ICON STATE
 // =======================
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
@@ -125,27 +189,8 @@ function updateBookmarkIcon(bookmark, img) {
         : './src/assets/icon-bookmark-empty.svg';
 }
 // =======================
-// TRENDING STYLES
+// MARKING NAV BUTTONS ON ANOTHER PAGES
 // =======================
-function applyTrendingStyles(card) {
-    card.className = 'movie-card-trending swiper-slide';
-
-    card.querySelector('.movie-card__image')
-        .className = 'movie-card-trending__image';
-
-    card.querySelector('.movie-card__bookmark')
-        .className = 'movie-card-trending__bookmark';
-
-    card.querySelector('.movie-card__info')
-        .className = 'movie-card-trending__info';
-
-    card.querySelector('.movie-card__meta')
-        .className = 'movie-card-trending__meta';
-
-    card.querySelector('.movie-card__title')
-        .className = 'movie-card-trending__title';
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const navMap = {
         'index.html': '.header__navbar-buttons--img.home',
@@ -160,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector(selector)?.classList.add('active');
 });
 // =======================
-// DOT
+// DOT DIVIDER
 // =======================
  export function dot() {
     const span = document.createElement('span');
@@ -168,13 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
     span.className = 'movie-card__info-divider';
     return span;
 }
-
-// local Storage
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
 const BOOKMARKS_KEY = 'bookmarks';
 function getBookmarks() {
     return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
 }
-
 function saveBookmark(id, value) {
     const bookmarks = getBookmarks();
     bookmarks[id] = value;

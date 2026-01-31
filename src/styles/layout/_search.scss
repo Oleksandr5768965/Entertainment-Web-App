@@ -3,7 +3,6 @@
 @use "../base/mixin" as *;
 
 .search {
-    margin-bottom: rem(24);
     &__wrapper {
         display:flex;
         margin-top: rem(24);

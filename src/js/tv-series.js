@@ -1,16 +1,24 @@
 import { dot } from './main';
-const categoryTvSeries = document.querySelector(".container.tv-series");
 
+const domElement = {
+    categoryTvSeries: document.querySelector(".container.tv-series")
+}
+// =======================
+// GET ACCES TO DATA
+// =======================
 fetch('./data.json')
     .then(res => res.json())
     .then(data => {
       data.forEach(movie => {
     const movieCard = createTvSeriesCard(movie);
     if (movie.category === "TV Series") {
-        categoryTvSeries.append(movieCard);
+        domElement.categoryTvSeries.append(movieCard);
     }
      });
    });
+// =======================
+// CREATE MOVIE CARD
+// =======================
 function createTvSeriesCard(movie) {
     const article = document.createElement('article');
     article.className = 'movie-card';
@@ -84,7 +92,9 @@ function createTvSeriesCard(movie) {
 
     return article;
 }
-
+// =======================
+// MARKING NAV BUTTONS ON ANOTHER PAGES
+// =======================
 document.addEventListener('DOMContentLoaded', () => {
     const navMap = {
         'index.html': '.header__navbar-buttons--img.home',
@@ -99,14 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector(selector)?.classList.add('active');
 });
-
+// =======================
+// BOOKMARK ICON STATE
+// =======================
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
 
-// local Storage
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
 const BOOKMARKS_KEY = 'bookmarks';
 
 function getBookmarks() {

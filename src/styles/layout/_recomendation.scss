@@ -7,10 +7,14 @@
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: rem(16);
-    margin-top: rem(24);
     &__title {
         @include text-preset1-mobile;
-        margin: 0 rem(16) 0 rem(16);
+        font-weight: 200;
+        margin: rem(20) 0 rem(10) rem(16);
+    }
+    &__search-result-title {
+        @include text-preset1-mobile;
+        margin: rem(24) 0 rem(24) rem(16);
         font-weight: 200;
     }
     .movie-card {

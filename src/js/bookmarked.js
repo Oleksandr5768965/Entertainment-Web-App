@@ -1,22 +1,26 @@
 import { dot } from './main';
 
 document.addEventListener('DOMContentLoaded', () => {
-const bookmarkedMovies = document.querySelector(".container.bookmarked");
-    fetch('./data.json')
-        .then(res => res.json())
-        .then(data => {
-            const bookmarks = getBookmarks();
-            data
-             .filter(movie => bookmarks[movie.id])
-             .forEach(movie => {
-                movie.isBookmarked = true;
-                const card =  createBookmarkedCard(movie);
-                bookmarkedMovies.append(card);
-            });
-        })
-        .catch(console.error);
+const domElement = {
+    bookmarkedMovies: document.querySelector(".container.bookmarked")
+}
+// =======================
+// GET ACCES TO DATA
+// =======================
+fetch('./data.json')
+    .then(res => res.json())
+    .then(data => {
+        const bookmarks = getBookmarks();
+        data
+        .filter(movie => bookmarks[movie.id])
+        .forEach(movie => {
+            movie.isBookmarked = true;
+            const card =  createBookmarkedCard(movie);
+            domElement.bookmarkedMovies.append(card);
+        });
+    })
+    .catch(console.error);
 });
-
 // =======================
 // CREATE MOVIE CARD
 // =======================
@@ -95,7 +99,9 @@ function createBookmarkedCard(movie) {
 
     return article;
 }
-
+// =======================
+// MARKING NAV BUTTONS ON ANOTHER PAGES
+// =======================
 document.addEventListener('DOMContentLoaded', () => {
     const navMap = {
         'index.html': '.header__navbar-buttons--img.home',
@@ -110,13 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector(selector)?.classList.add('active');
 });
-
+// =======================
+// BOOKMARK ICON STATE
+// =======================
 function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
-// local Storage
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
 const BOOKMARKS_KEY = 'bookmarks';
 
 function getBookmarks() {
