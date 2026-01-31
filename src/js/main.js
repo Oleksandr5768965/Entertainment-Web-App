@@ -1,12 +1,26 @@
-
+// =======================
+// OBJECT WITH DOM ELEMENTS 
+// =======================
     const domElement = {
         recomendation: document.querySelector('.container.recomendation'),
         recomendationTitle: document.querySelector('.recomendation__title'),
         trending: document.querySelector('.container.trending'),
         trendingTitle: document.querySelector('.trending__title'),
-        searchField: document.querySelector('#search-field')
+        searchField: document.querySelector('#search-field'),
+        authorInfo: document.querySelector('.author-info')
     }
-
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
+const BOOKMARKS_KEY = 'bookmarks';
+function getBookmarks() {
+    return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
+}
+function saveBookmark(id, value) {
+    const bookmarks = getBookmarks();
+    bookmarks[id] = value;
+    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
+}
 // =======================
 // GET ACCES TO DATA
 // =======================
@@ -131,10 +145,10 @@ function createMovieCard(movie) {
 const searchTitle = document.createElement('h2');
 searchTitle.className = 'recomendation__search-result-title';
 searchTitle.style.display = 'none';
-domElement.trending.parentNode.insertBefore(
-    searchTitle,
-    domElement.trending
-);
+// domElement.trending.parentNode.insertBefore(
+//     searchTitle,
+//     domElement.trending
+// );
 
 function renderMovies(list) {
     domElement.recomendation.innerHTML = '';
@@ -169,11 +183,13 @@ domElement.searchField.addEventListener('input', (e) => {
         searchTitle.style.display = 'none';
         domElement.recomendationTitle.style.display = 'block';
         domElement.trendingTitle.style.display = 'block';
+        domElement.authorInfo.style.display = 'block';
         renderMovies(movies);
         return;
     }
     domElement.recomendationTitle.style.display = 'none';
     domElement.trendingTitle.style.display = 'none';
+    domElement.authorInfo.style.display = 'none';
     const filteredMovies = filterMovies(value);
     searchTitle.textContent =
         `Found ${filteredMovies.length} results for '${value}'`;
@@ -212,18 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
     span.textContent = '•';
     span.className = 'movie-card__info-divider';
     return span;
-}
-// =======================
-// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
-// =======================
-const BOOKMARKS_KEY = 'bookmarks';
-function getBookmarks() {
-    return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
-}
-function saveBookmark(id, value) {
-    const bookmarks = getBookmarks();
-    bookmarks[id] = value;
-    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
 }
 
 

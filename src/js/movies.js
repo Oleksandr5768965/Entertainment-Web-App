@@ -1,15 +1,32 @@
 import { dot } from './main';
-
+// =======================
+// OBJECT WITH DOM ELEMENTS 
+// =======================
 const domElement = {
     categoryMovies: document.querySelector(".container.movies"),
+    moviesTitle: document.querySelector('.movies__title'),
+    searchField: document.querySelector('#search-field')
 }
-
+// =======================
+// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
+// =======================
+const BOOKMARKS_KEY = 'bookmarks';
+function getBookmarks() {
+    return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
+}
+function saveBookmark(id, value) {
+    const bookmarks = getBookmarks();
+    bookmarks[id] = value;
+    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
+}
 // =======================
 // GET ACCES TO DATA
 // =======================
+let movies = [];
 fetch('./data.json')
     .then(res => res.json())
     .then(data => {
+      movies = data;
       data.forEach(movie => {
         const movieCard = createMovieCard(movie);
             if (movie.category === "Movie") {
@@ -93,6 +110,54 @@ function createMovieCard(movie) {
     return article;
 }
 // =======================
+// RENDER MOVIES CARD FOR SEARCH
+// =======================
+// title for search mode
+const searchTitle = document.createElement('h2');
+searchTitle.className = 'movies__search-result-title';
+searchTitle.style.display = 'none';
+domElement.categoryMovies.parentNode.insertBefore(
+    searchTitle,
+    domElement.categoryMovies
+);
+
+function renderMovies(list) {
+    domElement.categoryMovies.innerHTML = '';
+
+    list.forEach(movie => {
+        const card = createMovieCard(movie);
+        domElement.categoryMovies.append(card);
+    });
+}
+// =======================
+// FILTER MOVIES FOR SEARCH
+// =======================
+function filterMovies(query) {
+    const q = query.toLowerCase();
+
+    return movies.filter(movie =>
+        movie.title.toLowerCase().includes(q)
+    );
+}
+// =======================
+// EVENT LISTENER ON THE INPUT
+// =======================
+domElement.searchField.addEventListener('input', (e) => {
+    const value = e.target.value.trim();
+    if (!value) {
+        searchTitle.style.display = 'none';
+        domElement.moviesTitle.style.display = 'block';
+        renderMovies(movies);
+        return;
+    }
+    domElement.moviesTitle.style.display = 'none';
+    const filteredMovies = filterMovies(value);
+    searchTitle.textContent =
+        `Found ${filteredMovies.length} results for '${value}'`;
+    searchTitle.style.display = 'block';
+    renderMovies(filteredMovies);
+});
+// =======================
 // MARKING NAV BUTTONS ON ANOTHER PAGES
 // =======================
 document.addEventListener('DOMContentLoaded', () => {
@@ -116,17 +181,4 @@ function updateBookmarkIcon(bookmark, img) {
     img.src = bookmark.classList.contains('is-active')
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
-}
-
-// =======================
-// LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
-// =======================
-const BOOKMARKS_KEY = 'bookmarks';
-function getBookmarks() {
-    return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
-}
-function saveBookmark(id, value) {
-    const bookmarks = getBookmarks();
-    bookmarks[id] = value;
-    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
 }
