@@ -2,6 +2,7 @@ import { dot } from './main';
 // =======================
 // OBJECT WITH DOM ELEMENTS 
 // =======================
+document.addEventListener("DOMContentLoaded", () => {
 const domElement = {
     categoryMovies: document.querySelector(".container.movies"),
     moviesTitle: document.querySelector('.movies__title'),
@@ -157,23 +158,7 @@ domElement.searchField.addEventListener('input', (e) => {
     searchTitle.style.display = 'block';
     renderMovies(filteredMovies);
 });
-// =======================
-// MARKING NAV BUTTONS ON ANOTHER PAGES
-// =======================
-document.addEventListener('DOMContentLoaded', () => {
-    const navMap = {
-        'index.html': '.header__navbar-buttons--img.home',
-        'movies.html': '.header__navbar-buttons--img.movies',
-        'tv-series.html': '.header__navbar-buttons--img.tv-series',
-        'bookmarked.html': '.header__navbar-buttons--img.bookmarked',
-    };
 
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
-    const selector = navMap[currentPage];
-    if (!selector) return;
-
-    document.querySelector(selector)?.classList.add('active');
-});
 // =======================
 // UPDATE BOOKMARK ICONS
 // =======================
@@ -182,3 +167,4 @@ function updateBookmarkIcon(bookmark, img) {
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
+});

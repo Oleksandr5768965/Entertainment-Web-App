@@ -6,10 +6,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    row-gap: rem(16);
+    .container.tv-series {
+        row-gap: rem(16);
+    }
     &__title {
         @include text-preset1-mobile;
-        margin: 0 rem(16) 0 rem(16);
+        margin: 0 rem(16) rem(24) rem(16);
         font-weight: 200;
     }
     .movie-card {

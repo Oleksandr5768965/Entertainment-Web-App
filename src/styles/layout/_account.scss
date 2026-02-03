@@ -12,12 +12,21 @@
         margin-top: rem(24);
         display:flex;
         justify-content: center;
+        label {
+            width: 50%;
+            border: dashed 2px black;
+            img {
+                border-radius: 50%;
+            }
+        }
     }
+
     &__info {
         display:flex;
         flex-direction: column;
         row-gap: 30px;
         margin-top: rem(24);
+        padding:0 rem(30) rem(40) rem(30);
         input {
             color:$white;
             background-color: transparent;

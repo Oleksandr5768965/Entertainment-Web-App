@@ -38,7 +38,6 @@ fetch('./data.json')
         });
     })
     .catch(console.error);
-});
 // =======================
 // CREATE MOVIE CARD
 // =======================
@@ -165,23 +164,7 @@ domElement.searchField.addEventListener('input', (e) => {
     searchTitle.style.display = 'block';
     renderMovies(filteredMovies);
 });
-// =======================
-// MARKING NAV BUTTONS ON ANOTHER PAGES
-// =======================
-document.addEventListener('DOMContentLoaded', () => {
-    const navMap = {
-        'index.html': '.header__navbar-buttons--img.home',
-        'movies.html': '.header__navbar-buttons--img.movies',
-        'tv-series.html': '.header__navbar-buttons--img.tv-series',
-        'bookmarked.html': '.header__navbar-buttons--img.bookmarked',
-    };
 
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
-    const selector = navMap[currentPage];
-    if (!selector) return;
-
-    document.querySelector(selector)?.classList.add('active');
-});
 // =======================
 // BOOKMARK ICON STATE
 // =======================
@@ -190,3 +173,4 @@ function updateBookmarkIcon(bookmark, img) {
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
+});

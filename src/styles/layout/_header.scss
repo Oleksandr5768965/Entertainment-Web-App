@@ -23,6 +23,9 @@
             fill: $white;
         }
     }
+    &__nav-account-img {
+        border-radius: 50%;
+    }
 }
 
 @include tablet-media {

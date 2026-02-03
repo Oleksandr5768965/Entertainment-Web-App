@@ -1,4 +1,6 @@
 import { dot } from './main';
+
+document.addEventListener("DOMContentLoaded", () => {
 // =======================
 // OBJECT WITH DOM ELEMENTS 
 // =======================
@@ -11,11 +13,9 @@ const domElement = {
 // LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
 // =======================
 const BOOKMARKS_KEY = 'bookmarks';
-
 function getBookmarks() {
     return JSON.parse(localStorage.getItem(BOOKMARKS_KEY)) ?? {};
 }
-
 function saveBookmark(id, value) {
     const bookmarks = getBookmarks();
     bookmarks[id] = value;
@@ -149,34 +149,18 @@ domElement.searchField.addEventListener('input', (e) => {
     const value = e.target.value.trim();
     if (!value) {
         searchTitle.style.display = 'none';
-        domElement.moviesTvSeriesTitle.style.display = 'block';
+        domElement.categoryTvSeriesTitle.style.display = 'block';
         renderMovies(movies);
         return;
     }
-    domElement.moviesTvSeriesTitle.style.display = 'none';
+    domElement.categoryTvSeriesTitle.style.display = 'none';
     const filteredMovies = filterMovies(value);
     searchTitle.textContent =
         `Found ${filteredMovies.length} results for '${value}'`;
     searchTitle.style.display = 'block';
     renderMovies(filteredMovies);
 });
-// =======================
-// MARKING NAV BUTTONS ON ANOTHER PAGES
-// =======================
-document.addEventListener('DOMContentLoaded', () => {
-    const navMap = {
-        'index.html': '.header__navbar-buttons--img.home',
-        'movies.html': '.header__navbar-buttons--img.movies',
-        'tv-series.html': '.header__navbar-buttons--img.tv-series',
-        'bookmarked.html': '.header__navbar-buttons--img.bookmarked',
-    };
 
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
-    const selector = navMap[currentPage];
-    if (!selector) return;
-
-    document.querySelector(selector)?.classList.add('active');
-});
 // =======================
 // BOOKMARK ICON STATE
 // =======================
@@ -185,3 +169,4 @@ function updateBookmarkIcon(bookmark, img) {
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
+});

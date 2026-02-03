@@ -10,3 +10,8 @@ body {
 .container {
     padding: 0 rem(16) 0 rem(16);
 }
+.movies__search-result-title {
+    @include text-preset1-mobile;
+    margin: 0 0 rem(24) rem(16);
+    font-weight: 200;
+}

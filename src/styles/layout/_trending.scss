@@ -8,10 +8,8 @@
     column-gap: rem(25);
     &__title {
         @include text-preset1-mobile;
-        margin: 0 rem(16) 0 rem(16);
+        margin: 0 rem(16) rem(24) rem(16);
         font-weight: 200;
-        margin-bottom: rem(16);
-        margin-top: rem(24);
     }
     .movie-card-trending {
         position: relative;
@@ -53,7 +51,7 @@
                 @include text-preset4-mobile;
                 opacity:79%;
             }
-            img[alt="category Img"] {
+            img[alt="category-img"] {
                 margin-right: rem(8);
                 height:14px;
             }
@@ -74,3 +72,5 @@
     padding-right: 132px !important;
     /* = spaceBetween */
 }
+
+

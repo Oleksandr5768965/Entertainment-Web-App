@@ -6,16 +6,13 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    row-gap: rem(16);
+    .container.recomendation {
+        row-gap: rem(16);
+    }
     &__title {
         @include text-preset1-mobile;
         font-weight: 200;
-        margin: rem(20) 0 rem(10) rem(16);
-    }
-    &__search-result-title {
-        @include text-preset1-mobile;
-        margin: rem(24) 0 rem(24) rem(16);
-        font-weight: 200;
+        margin: rem(20) 0 rem(24) rem(16);
     }
     .movie-card {
         position:relative;
@@ -38,7 +35,6 @@
             justify-content:center;
             align-items: center;
             border-radius: 50%;
-            
         }
         &__image {
             img.poster-img {
@@ -56,7 +52,7 @@
                 @include text-preset6-mobile;
 
             }
-            img[alt="category Img"] {
+            img[alt="category-img"] {
                 margin-right: rem(8);
             }
         }
