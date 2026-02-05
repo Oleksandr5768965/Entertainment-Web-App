@@ -129,7 +129,7 @@ function renderMovies(list) {
 
     list.forEach(movie => {
         const card = createTvSeriesCard(movie);
-        domElement.categoryTvSeries.append(card);
+        if (movie.category === 'TV Series') domElement.categoryTvSeries.append(card);
     });
 }
 // =======================

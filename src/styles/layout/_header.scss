@@ -6,7 +6,7 @@
     &__navbar-wrapper {
         padding:rem(16);
         background-color: $blue900;
-        img[alt="Img Avatar"] { height:24px; } 
+        img[alt="Img Avatar"] { height:24px; border-radius: 50%;} 
         img[alt="appLogo"] { height:20px; }
     }
     &__navbar {

@@ -66,3 +66,15 @@
         }
     }
 }
+@include tablet-media {
+    .sign-up {
+        &__wrapper {
+            min-width: 400px;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

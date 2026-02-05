@@ -206,7 +206,7 @@ const navMap = {
     index: '.header__navbar-buttons--img.home',
     movies: '.header__navbar-buttons--img.movies',
     'tv-series': '.header__navbar-buttons--img.tv-series',
-    bookmarked: '.header__navbar-buttons--img.bookmarked'
+    bookmarked: '.header__navbar-buttons--img.bookmarked',
 };
 document.addEventListener('DOMContentLoaded', () => {
     console.log('dom load');

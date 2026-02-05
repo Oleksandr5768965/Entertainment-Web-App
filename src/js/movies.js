@@ -127,7 +127,7 @@ function renderMovies(list) {
 
     list.forEach(movie => {
         const card = createMovieCard(movie);
-        domElement.categoryMovies.append(card);
+        if (movie.category === 'Movie') domElement.categoryMovies.append(card);
     });
 }
 // =======================

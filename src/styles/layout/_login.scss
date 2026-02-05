@@ -63,3 +63,15 @@
         }
     }
 }
+@include tablet-media {
+    .login {
+        &__wrapper {
+            min-width:400px;
+            align-items: center;
+        }
+        .container {
+            display:flex;
+            justify-content: center;
+        }
+    }
+}

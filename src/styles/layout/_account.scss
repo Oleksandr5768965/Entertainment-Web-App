@@ -24,22 +24,18 @@
     &__info {
         display:flex;
         flex-direction: column;
-        row-gap: 30px;
-        margin-top: rem(24);
-        padding:0 rem(30) rem(40) rem(30);
-        input {
-            color:$white;
+        align-items: center;
+        padding:rem(20) rem(30) rem(40) rem(30);
+        button {
+            display:flex;
             background-color: transparent;
-            outline:none;
-            width:100%;
-            border: solid 2px $blue500;
-            border-radius: 8px;
-            padding:10px;
-            margin-top: 10px;
-            @include text-preset2-mobile;
-        }
-        &--age {
-            max-width:150px;
+            border: none;
+            color:$white;
+            img {
+                width:20px;
+                height: 20px;
+                margin-right: 10px;
+            }
         }
     }
 }

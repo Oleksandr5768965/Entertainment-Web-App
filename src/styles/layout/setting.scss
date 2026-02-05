@@ -1,0 +1,91 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixin" as *;
+
+.setting {
+    &__wrapper {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__image {
+        width: 50%; 
+        img {
+            border-radius: 50%;
+        }
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        margin-top: rem(24);
+        row-gap:rem(17);
+        width:100%;
+        label {
+            display: flex;
+            flex-direction: column;
+            input {
+                border-radius: rem(8);
+                background-color: #161D2F;
+                border:solid 2px $blue500;
+                padding:rem(10);
+                color:$white;
+            }
+        }
+        &--email {
+            padding: rem(10);
+            border-radius: rem(8);
+            background-color: #161D2F;
+            border: solid 2px $blue500;
+        }
+    }
+    &__app {
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        margin-top: rem(27);
+        row-gap: rem(5);
+        button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width:100%;
+            background-color: #161D2F;
+            border: solid 1px $blue500;
+            color:$white;
+            border-radius: rem(8);
+            text-align: left;
+            padding:rem(16);
+            svg {
+                margin-right: rem(16);
+            }
+        }
+    }
+    &__account {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width:100%;
+        margin-top: rem(27);
+        row-gap: rem(5);
+        button {
+            height: rem(48);
+            width:100%;
+            background-color: #161D2F;
+            border: solid 1px $blue500;
+            color: $red500;
+            border-radius: rem(8);
+        }
+    }
+    &__exit-button {
+        width: 100%;
+        padding:rem(42) 0 rem(42) 0;
+        button {
+            height: rem(48);
+            width: 100%;
+            background-color: #161D2F;
+            border: solid 2px $white;
+            color: $white;
+            border-radius: rem(13);
+        }
+    }
+}
