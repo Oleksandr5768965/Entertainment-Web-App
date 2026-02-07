@@ -79,6 +79,9 @@
     &__exit-button {
         width: 100%;
         padding:rem(42) 0 rem(42) 0;
+        display:flex;
+        flex-direction: column;
+        row-gap: rem(16);
         button {
             height: rem(48);
             width: 100%;
@@ -86,6 +89,16 @@
             border: solid 2px $white;
             color: $white;
             border-radius: rem(13);
+        }
+        a {
+            height: rem(48);
+            width: 100%;
+            background-color: #161D2F;
+            border: solid 2px $white;
+            color: $white;
+            border-radius: rem(13);
+            text-align: center;
+            padding:rem(10) 0 rem(10) 0;
         }
     }
 }
