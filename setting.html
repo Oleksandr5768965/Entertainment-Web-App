@@ -46,7 +46,7 @@
                         </svg>
                     </a>
                 </div>
-                <a href="./account.html"><img src="./src/assets/icon-avatar-unknown-job.jpg" alt="Img Avatar"></a>
+                <a href="./account.html"><img id="header-navbar-avatar" src="./src/assets/icon-avatar-unknown-job.jpg" alt="Img Avatar"></a>
             </div>
         </div>
     </section>
@@ -56,22 +56,22 @@
             <div class="setting__wrapper">
                 <div class="setting__image">
                     <label for="fileInput">
-                        <img src="./src/assets/icon-avatar-unknown-job.jpg" alt="Img Avatar">
+                        <img id="setting-avatar-img" src="./src/assets/icon-avatar-unknown-job.jpg" alt="Img Avatar">
                     </label>
                     <input type="file" id="fileInput" hidden>
                 </div>
                 <div class="setting__info">
                     <label for="name">
                         <span>Name</span>
-                        <input type="name" id="name" placeholder="Your Name">
+                        <input type="name" id="setting-name" placeholder="Your Name">
                     </label>
                     <label for="text">
                         <span>About You</span>
-                        <input type="text" id="text" placeholder="Tell us a little about yourself">
+                        <input type="text" id="setting-text" placeholder="Tell us a little about yourself">
                     </label>
                     <label for="email">
                         <span>Email</span>
-                        <div class="setting__info--email" id="email">youremail@gmail.com</div>
+                        <div class="setting__info--email" id="setting-email">youremail@gmail.com</div>
                     </label>
                 </div>
                 <div class="setting__app">
@@ -121,6 +121,7 @@
         </div>
     </section>
     <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/account-setting.js"></script>
 </body>
 
 </html>

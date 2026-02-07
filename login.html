@@ -12,12 +12,13 @@
     <div class="container">
       <div class="login__wrapper">
         <img src="./src/assets/logo.svg" alt="appLogo">
-        <form>
+        <form id="login-form">
           <h1 class="login__form-title">
             Login
           </h1>
-          <input type="email" placeholder="Email address">
-          <input type="password" placeholder="Password">
+          <input type="email" id="email" placeholder="Email address">
+          <input type="password" id="password" placeholder="Password">
+          <span id="login-error-message" style="display:none;"></span>
           <div class="login__button-container">
             <button>Login to your account</button>
           </div>
@@ -29,5 +30,6 @@
       </div>
     </div>
   </section>
+  <script type="module" src="./src/js/account.js"></script>
 </body>
 </html>

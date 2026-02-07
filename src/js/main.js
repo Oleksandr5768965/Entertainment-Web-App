@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         trendingContainer: document.querySelector('.trending'),
         trendingTitle: document.querySelector('.trending__title'),
         searchField: document.querySelector('#search-field'),
-        authorInfo: document.querySelector('.author-info')
+        authorInfo: document.querySelector('.author-info'),
+        navBarImg: document.querySelector('#navbar-img-avatar')
     };
     // =======================
     // LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
@@ -186,9 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // =======================
 // MARKING NAV BUTTONS ON ANOTHER PAGES
 // =======================
-// =======================
-// MARKING NAV BUTTONS ON ANOTHER PAGES
-// =======================
 function getCurrentPage() {
     const path = window.location.pathname;
 
@@ -236,4 +234,13 @@ function updateBookmarkIcon(bookmark, img) {
         span.className = 'movie-card__info-divider';
         return span;
     }
+// =======================
+// CHANGING NAV BAR AVATAR ICON
+// =======================
+    // if (!domElement.navBarImg) return;
+
+    // const savedAvatar = localStorage.getItem('avatar');
+    // if (savedAvatar) {
+    //     domElement.navBarImg.src = savedAvatar;
+    // }
 

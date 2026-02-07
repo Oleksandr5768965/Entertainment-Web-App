@@ -29,11 +29,14 @@
                     margin-bottom: rem(24);
                 }
                 &:last-of-type {
-                    margin-bottom: rem(40);
+                    margin-bottom: rem(6);
                 }
             }
             p {
                 justify-self: center;
+            }
+            span {
+                color:$red500;
             }
         }
     }
@@ -43,6 +46,7 @@
     &__button-container {
         display: flex;
         margin-bottom: rem(24);
+        margin-top: rem(30);
         button {
             width: 100%;
             padding:rem(15) 0;
