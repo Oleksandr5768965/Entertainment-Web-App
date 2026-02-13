@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const domElement = {
     categoryMovies: document.querySelector(".container.movies"),
     moviesTitle: document.querySelector('.movies__title'),
-    searchField: document.querySelector('#search-field')
+    searchField: document.querySelector('#search-field'),
+     navBarImg: document.querySelector('#navbar-img-avatar')
 }
 // =======================
 // LOCAL STORAGE FOR BOOKMARKED MOVIE CARD
@@ -167,4 +168,13 @@ function updateBookmarkIcon(bookmark, img) {
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
+// =======================
+// CHANGING NAV BAR AVATAR ICON
+// =======================
+
+    const savedAvatar = localStorage.getItem('avatar');
+
+    if (domElement.navBarImg) {
+        domElement.navBarImg.src = savedAvatar;
+    }
 });

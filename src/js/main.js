@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // =======================
@@ -226,7 +227,15 @@ function updateBookmarkIcon(bookmark, img) {
         ? './src/assets/icon-bookmark-full.svg'
         : './src/assets/icon-bookmark-empty.svg';
 }
+// =======================
+// CHANGING NAV BAR AVATAR ICON
+// =======================
 
+    const savedAvatar = localStorage.getItem('avatar');
+
+    if (domElement.navBarImg) {
+        domElement.navBarImg.src = savedAvatar;
+    }
 });
     export function dot() {
         const span = document.createElement('span');
@@ -234,13 +243,4 @@ function updateBookmarkIcon(bookmark, img) {
         span.className = 'movie-card__info-divider';
         return span;
     }
-// =======================
-// CHANGING NAV BAR AVATAR ICON
-// =======================
-    // if (!domElement.navBarImg) return;
-
-    // const savedAvatar = localStorage.getItem('avatar');
-    // if (savedAvatar) {
-    //     domElement.navBarImg.src = savedAvatar;
-    // }
 

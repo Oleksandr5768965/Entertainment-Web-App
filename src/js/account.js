@@ -10,7 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm: document.querySelector('#login-form'),
         loginEmail: document.querySelector('#login-form #email'),
         loginPassword: document.querySelector('#login-form #password'),
-        loginError: document.querySelector('#login-error-message')
+        loginError: document.querySelector('#login-error-message'),
+        // profile 
+        accountName: document.querySelector('.account__name'),
+        accountBioBtn: document.querySelector('#account-bio-btn'),
+        accountBio: document.querySelector('.account__bio'),
+        accountDescription: document.querySelector('.account__info--description')
     };
     // =====================
     // SIGN-UP
@@ -69,4 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.loginError.textContent = text;
         dom.loginError.style.display = 'block';
     }
+    // =====================
+   // UPDATE PROFILE INFO
+   // =====================
+
+if (dom.accountName) {
+    const savedName = localStorage.getItem('username');
+    const savedBio = localStorage.getItem('userBio');
+    if (savedName) {
+        dom.accountName.textContent = savedName;
+    } 
+    if (savedBio) {
+        dom.accountBio.textContent = savedBio;
+    }
+}
+
+dom.accountBioBtn.addEventListener('click', () => {
+    window.location.href = 'setting.html';
+});
 });

@@ -38,6 +38,22 @@
             border: solid 2px $blue500;
         }
     }
+    &__info-btn-save-changes {
+        width: 100%;
+        padding:rem(6) 0 rem(10) 0;
+        display:flex;
+        flex-direction: column;
+        row-gap: rem(16);
+        button {
+            height: rem(48);
+            width: 100%;
+            background-color: #161D2F;
+            border: solid 2px $white;
+            color: $white;
+            border-radius: rem(13);
+            
+        }
+    }
     &__app {
         display: flex;
         flex-direction: column;

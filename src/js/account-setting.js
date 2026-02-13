@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navBarAvatarImg: document.querySelector('#header-navbar-avatar'),
         settingName: document.querySelector('#setting-name'),
         settingText: document.querySelector('#setting-text'),
+        infoBtnSaveChanges: document.querySelector('#info-btn-save-changes'),
     };
 
     if (!dom.imgFileInput) return;
@@ -33,5 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         reader.readAsDataURL(file);
+    });
+    //
+    //UPDATE PROFILE
+    //
+    dom.infoBtnSaveChanges.addEventListener('click', () => {
+       const nameValue = dom.settingName.value.trim();
+       const bioValue = dom.settingText.value.trim();
+
+        if (!nameValue) return;
+
+       localStorage.setItem('username', nameValue);
+       localStorage.setItem('userBio', bioValue);
     });
 });
