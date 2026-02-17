@@ -64,3 +64,33 @@
         width: 100% !important;
     }
 }
+@include tablet-media {
+    .movie-card {
+        width:calc(33% - 30px) !important;
+    }
+    .recomendation {
+        .container.recomendation {
+            row-gap: 25px;
+            column-gap: 3px;
+        }
+    }
+}
+@include desktop-media {
+    .recomendation {
+        &__title {
+            margin-left: 149px;
+            @include text-preset1;
+        }
+        .movie-card {
+            width: calc(30% - 100px) !important;
+            &__title {
+                @include text-preset3;
+            }
+            &__meta {
+                span {
+                    @include text-preset5;
+                }
+           }
+        }
+    }
+}

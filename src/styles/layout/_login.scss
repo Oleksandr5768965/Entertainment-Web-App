@@ -79,3 +79,11 @@
         }
     }
 }
+@include desktop-media {
+    .login {
+        &__wrapper {
+            margin-top: 0;
+            height:100vh;
+        }
+    }
+}

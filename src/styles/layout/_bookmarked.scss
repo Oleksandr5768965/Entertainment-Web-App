@@ -58,3 +58,41 @@
         }
     }
 }
+
+@include tablet-media {
+    .movie-card {
+        width: calc(33% - 30px) !important;
+    }
+
+    .movies {
+        .container.bookmarked {
+            row-gap: 25px;
+            column-gap: 23px;
+        }
+    }
+}
+
+@include desktop-media {
+    .bookmarked {
+        &__title {
+            margin-left: 149px;
+            @include text-preset1;
+        }
+        .movies__search-result-title {
+            margin-left: 149px;
+        }
+        .movie-card {
+            width: calc(30% - 100px) !important;
+
+            &__title {
+                @include text-preset3;
+            }
+
+            &__meta {
+                span {
+                    @include text-preset5;
+                }
+            }
+        }
+    }
+}

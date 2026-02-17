@@ -21,3 +21,10 @@
         input::-webkit-search-cancel-button { display:none; }
     }
 }
+@include desktop-media {
+    .search {
+        &__wrapper {
+            margin-top: rem(56);
+        }
+    }
+}

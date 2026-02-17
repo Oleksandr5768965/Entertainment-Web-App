@@ -14,4 +14,14 @@ body {
     @include text-preset1-mobile;
     margin: 0 0 rem(24) rem(16);
     font-weight: 200;
+} 
+@include tablet-media {
+    .container {
+        padding: 0 rem(25) 0 rem(25);
+    }
+}
+@include desktop-media {
+    .container {
+        padding: 0 rem(36) 0 rem(149);
+    }
 }

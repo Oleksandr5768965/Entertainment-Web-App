@@ -45,3 +45,17 @@
         }
     }
 }
+@include desktop-media {
+    .author-info {
+        &__title {
+            @include text-preset1;
+        }
+        &__wrapper {
+            flex-direction: row;
+
+        }
+        &__info {
+            width:24%;
+        }
+    }
+}

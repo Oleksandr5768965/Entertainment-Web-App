@@ -73,4 +73,19 @@
     /* = spaceBetween */
 }
 
-
+@include desktop-media {
+    .trending {
+        &__title {
+            margin-left: 149px;
+            @include text-preset1;
+        }
+        .movies__search-result-title {
+            margin-left: 149px;
+        }
+        .movie-card-trending {
+            &__title {
+                @include text-preset3;
+            }
+        }
+    }
+}

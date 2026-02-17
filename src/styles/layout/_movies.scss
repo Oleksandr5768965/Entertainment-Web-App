@@ -9,6 +9,9 @@
     .container.movies {
         row-gap: rem(16);
     }
+    .movies__search-result-title {
+        margin-left: 149px;
+    }
     &__title {
         @include text-preset1-mobile;
         margin: 0 rem(16) rem(24) rem(16);
@@ -53,6 +56,41 @@
             }
             img[alt="category Img"] {
                 margin-right: rem(8);
+            }
+        }
+    }
+}
+@include tablet-media {
+    .movie-card {
+        width: calc(33% - 30px) !important;
+    }
+
+    .movies {
+        .container.movies {
+            row-gap: 25px;
+            column-gap: 23px;
+        }
+    }
+}
+
+@include desktop-media {
+    .movies {
+        &__title {
+            margin-left: 149px;
+            @include text-preset1;
+        }
+
+        .movie-card {
+            width: calc(30% - 100px) !important;
+
+            &__title {
+                @include text-preset3;
+            }
+
+            &__meta {
+                span {
+                    @include text-preset5;
+                }
             }
         }
     }
