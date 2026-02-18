@@ -44,12 +44,12 @@
         &__navbar{
             flex-direction: column;
             height: 90vh;
-            width:20px;
+            width:26px;
         }
         &__navbar-wrapper {
-            padding: rem(28) rem(33);
+            padding: rem(25) rem(30);
             margin: 0 0 0 rem(28);
-            border-radius: 20px;
+            border-radius: 30px;
         }
         &__navbar-buttons {
             display: flex;

@@ -83,3 +83,11 @@
         }
     }
 }
+@include desktop-media {
+    .sign-up {
+        &__wrapper {
+            margin-top: 0;
+            height:100vh;
+        }
+    }
+}

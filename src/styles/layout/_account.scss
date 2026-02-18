@@ -39,3 +39,23 @@
         }
     }
 }
+
+@include desktop-media {
+    .account {
+        &__title {
+            @include text-preset1;
+            margin-top: rem(56);
+        }
+        &__image {
+            label {
+                border: dashed 5px black;
+            }
+        }
+        &__name {
+            @include text-preset1;
+        }
+        &__bio {
+            @include text-preset2-medium;
+        }
+    }
+}

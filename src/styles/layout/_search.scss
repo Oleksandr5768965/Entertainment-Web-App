@@ -25,6 +25,13 @@
     .search {
         &__wrapper {
             margin-top: rem(56);
+            margin-bottom: rem(40);
+            input {
+                font-size: 24px;
+            }
+            img {
+                height:35px;
+            }
         }
     }
 }
