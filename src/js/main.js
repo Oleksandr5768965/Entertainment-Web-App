@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =======================
     let movies = [];
 
-    fetch('./data.json')
+    fetch('/data.json')
         .then(res => res.json())
         .then(data => {
             movies = data;

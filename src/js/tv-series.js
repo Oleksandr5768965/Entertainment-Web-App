@@ -26,7 +26,7 @@ function saveBookmark(id, value) {
 // GET ACCES TO DATA
 // =======================
 let movies = [];
-fetch('./data.json')
+fetch('/data.json')
     .then(res => res.json())
     .then(data => {
       movies = data;
